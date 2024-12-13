@@ -2,34 +2,30 @@
 
 ![中国地图闪闪发光](./images/china-map.png)
 
+📢 注意：该分支处于维护状态，目前在 Node.js 14.x 版本中可稳定运行。
+
 ## 一、生成项目及安装插件
 
-```
-# 安装 Vue Cli
+```bash
+# 安装 Vue CLI
 npm install vue-cli -g
-
 # 初始化项目
 vue init webpack vue-china-map
-
 # 切到目录下
 cd vue-china-map
-
 # 安装项目依赖
 npm install
-
 # 安装 Vuex
 npm install vuex --save
-
 # 安装 Axios
 npm install axios --save
-
 # 安装 ECharts
 npm install echarts --save
 ```
 
 ## 二、项目结构
 
-```
+```plain
 ├── index.html
 ├── main.js
 ├── components
@@ -44,32 +40,26 @@ npm install echarts --save
 
 3.1 按需求引入与中国地图相关的 ECharts 图表和组件。
 
-```
+```javascript
 // 主模块
 let echarts = require('echarts/lib/echarts')
-
 // 散点图
 require('echarts/lib/chart/scatter')
-
 // 散点图放大
 require('echarts/lib/chart/effectScatter')
-
 // 地图
 require('echarts/lib/chart/map')
-
 // 图例
 require('echarts/lib/component/legend')
-
 // 提示框
 require('echarts/lib/component/tooltip')
-
 // 地图 GEO
 require('echarts/lib/component/geo')
 ```
 
 3.2 引入中国地图 JavaScript 文件，会自动注册地图；也可以通过 Axios 方式引入 JSON 文件，需要**手动注册** `echarts.registerMap('china', chinaJson.data)`。
 
-```
+```javascript
 // 中国地图 JavaScript 文件
 require('echarts/map/js/china')
 ```
@@ -78,7 +68,7 @@ require('echarts/map/js/china')
 
 DOM 容器：
 
-```
+```javascript
 <template>
   <div id="china-map"></div>
 </template>
@@ -86,14 +76,13 @@ DOM 容器：
 
 初始化 ECharts 实例：
 
-```
+```javascript
 let chinaMap = echarts.init(document.getElementById('china-map'))
 ```
 
-3.4 设置初始化的空白地图，这里需要设置很多 ECharts 参数，参考 [ECharts 配置项手册](http://echarts.baidu.com/option.html)。
+3.4 设置初始化的空白地图，这里需要设置很多 ECharts 参数，参考 [ECharts 配置项手册](https://echarts.apache.org/zh/option.html)。
 
-```
-
+```javascript
 chinaMap.setOption({
   backgroundColor: '#272D3A',
   // 标题
@@ -209,13 +198,13 @@ chinaMap.setOption({
 
 4.1 在 `ChinaMap.js` 中引入 Vuex 和 Axios。
 
-```
+```javascript
 import axios from 'axios'
 ```
 
 4.2 设置必要的变量。
 
-```
+```javascript
 const state = {
   geoCoordMap: {'香港特别行政区': [114.08, 22.2], '澳门特别行政区': [113.33, 22.13], '台北': [121.5, 25.03]/*等等*/},
   // 发光的城市
@@ -228,7 +217,7 @@ const state = {
 
 4.3 在 `actions` 中抓取后台数据并更新地图。
 
-```
+```javascript
 const actions = {
   fetchHeatChinaRealData ({state, commit}, chartsObj) {
     axios.get('static/data/heatChinaRealData.json')
@@ -272,9 +261,9 @@ const actions = {
 
 此时 `npm run dev` 已经可以看到中国地图上闪闪的黄色小点点。
 
-若想改变她使动态展示，可以在 `index.vue` 中 `mounted` 下面加上：
+若想动态展示，可以在 `index.vue` 中 `mounted` 下面加上：
 
-```
+```javascript
 chinaMap.showLoading(showLoadingDefault)
 this.$store.commit('openLoading')
 this.$store.dispatch('fetchHeatChinaRealData', chinaMap)
@@ -285,7 +274,7 @@ setInterval(() => {
 
 在 `ChinaMap.js` 中 `actions` 的 `mutations` 中 `fetchHeatChinaRealData` 修改：
 
-```
+```javascript
 let lightData = paleData.sort((a, b) => {
     return b.value - a.value
 }).slice(0 + state.showCount, state.showCityNumber + state.showCount)
@@ -299,7 +288,7 @@ if (state.isLoading) {
 
 5.1 别忘了在 `main.js` 里面引入 Vuex。
 
-```
+```javascript
 import Vue from 'vue'
 import Index from './components/index.vue'
 import store from './store/index'
