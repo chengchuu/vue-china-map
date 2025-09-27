@@ -305,4 +305,4 @@ Vue.use(ChinaMap)
 
 5.2 案例代码
 
-GitHub：[https://github.com/mazeyqian/vue-china-map](https://github.com/mazeyqian/vue-china-map)
+GitHub：[https://github.com/chengchuu/vue-china-map](https://github.com/chengchuu/vue-china-map)

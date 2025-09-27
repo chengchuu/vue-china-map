@@ -2,7 +2,7 @@
   "name": "vue-china-map",
   "version": "1.0.0",
   "description": "A Vue.js project.",
-  "author": "Mazey <mazey@mazey.net>",
+  "author": "Cheng <mazeyqian@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
