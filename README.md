@@ -1,4 +1,4 @@
-# Vue+Vuex+Axios+ECharts 画一个动态更新的中国地图
+# Vue + Vuex + Axios + ECharts 画一个动态更新的中国地图
 
 ![中国地图闪闪发光](./images/china-map.png)
 
