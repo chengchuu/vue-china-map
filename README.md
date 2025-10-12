@@ -2,7 +2,7 @@
 
 ![中国地图闪闪发光](./images/china-map.png)
 
-📢 注意：该分支处于维护状态，目前在 Node.js 14.x 版本中可稳定运行。
+📢 注意：该分支处于维护状态，目前在 Node.js 14.x 版本中可稳定运行。建议使用 [NVM](https://github.com/nvm-sh/nvm) (Node Version Manager) 来管理 Node.js 版本，方便在不同项目间切换版本。
 
 ## 一、生成项目及安装插件
 
