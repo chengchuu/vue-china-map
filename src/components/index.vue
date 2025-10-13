@@ -22,7 +22,7 @@
   require('echarts/lib/component/legend')
   // 提示框
   require('echarts/lib/component/tooltip')
-  // 地图geo
+  // 地图 GEO
   require('echarts/lib/component/geo')
   // 中国地图
   require('echarts/map/js/china')
@@ -90,7 +90,7 @@
         series: [
           {
             name: '地区热度',
-            // 表的类型 这里是散点
+            // 表的类型，这里是散点
             type: 'scatter',
             // 使用地理坐标系，通过 `geoIndex` 指定相应的地理坐标系组件
             coordinateSystem: 'geo',
@@ -119,7 +119,7 @@
           },
           {
             name: 'top5',
-            // 表的类型 这里是散点
+            // 表的类型，这里是散点
             type: 'effectScatter',
             // 使用地理坐标系，通过 `geoIndex` 指定相应的地理坐标系组件
             coordinateSystem: 'geo',

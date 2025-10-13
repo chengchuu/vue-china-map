@@ -1,0 +1,3 @@
+{
+  "window.title": "${rootName}${separator}${dirty}${activeEditorShort}${separator}${profileName}${separator}${appName}"
+}

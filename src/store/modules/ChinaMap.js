@@ -63,7 +63,7 @@ const mutations = {
   },
   addCount (state) {
     state.showCount ++
-    // test
+    // Test
     if (state.showCount >= 70) {
       state.showCount = 1
     }
