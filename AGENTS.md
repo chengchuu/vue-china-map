@@ -2,30 +2,29 @@
 
 ## Project Structure & Module Organization
 
-This is a Vue 2 application built with the legacy Vue CLI Webpack template. Application code lives in `src/`: `src/main.js` bootstraps Vue, `src/components/index.vue` renders the China map view, and `src/store/` contains Vuex setup plus the `ChinaMap` module. Static runtime data is in `static/data/heatChinaRealData.json`; documentation images are in `images/`. Build and environment configuration live in `build/` and `config/`. Tests are split into `test/unit/` for Karma/Mocha specs and `test/e2e/` for Nightwatch browser tests.
+This is a Vue 3 application built with Vite. Runtime code lives in `src/`: `src/main.js` creates the Vue app, `src/App.vue` is the root component, `src/components/ChinaMap.vue` renders the ECharts map, and `src/stores/chinaMap.js` contains Pinia state/actions for loading heat-map data. Global styles are in `src/styles.css`. Public static files live under `public/`; the map data is served from `public/static/data/heatChinaRealData.json`. Build output goes to `dist/`.
 
 ## Build, Test, and Development Commands
 
-- `npm install`: install project dependencies. Use Node.js 14.x for the most reliable local setup.
-- `npm run dev` or `npm start`: start the Webpack dev server.
-- `npm run build`: create a production build through `build/build.js`.
-- `npm run lint`: run ESLint across `src`, unit specs, and e2e specs.
-- `npm run unit`: run Karma/Mocha unit tests once.
-- `npm run e2e`: run Nightwatch e2e tests.
-- `npm test`: run unit tests followed by e2e tests.
+- `npm install`: install dependencies from `package-lock.json`.
+- `npm run dev`: start the Vite dev server at `127.0.0.1:8080`.
+- `npm run build`: generate a production build in `dist/`.
+- `npm run preview`: serve the production build locally.
+- `npm run lint`: run ESLint flat config across the project.
+- `npm test`: currently aliases `npm run lint`.
 
 ## Coding Style & Naming Conventions
 
-Use UTF-8, LF line endings, final newlines, trimmed trailing whitespace, and 2-space indentation as defined in `.editorconfig`. JavaScript and Vue files are linted with ESLint Standard style via `babel-eslint` and `eslint-plugin-html`; this means no semicolons, single quotes, and spacing enforced by StandardJS. Prefer clear Vue component names and keep Vuex modules in `src/store/modules/` using PascalCase filenames, as in `ChinaMap.js`.
+Use UTF-8, LF line endings, final newlines, trimmed trailing whitespace, and 2-space indentation. JavaScript and Vue files use ES modules, single quotes, and no semicolons. Vue single-file components should use PascalCase filenames, such as `ChinaMap.vue`. Pinia stores should live in `src/stores/` and use `useXStore` naming, such as `useChinaMapStore`.
 
 ## Testing Guidelines
 
-Place unit specs under `test/unit/specs/` with the `*.spec.js` naming pattern. Use Mocha, Chai, Sinon, and Karma utilities already configured in `test/unit/karma.conf.js`. Keep browser workflow tests under `test/e2e/specs/` and use Nightwatch assertions, including custom assertions from `test/e2e/custom-assertions/`. Run `npm run lint` and the relevant test command before submitting changes.
+The old Karma, PhantomJS, Nightwatch, Selenium, and ChromeDriver tests were removed during the Vue 3 migration because they targeted the deleted Vue CLI demo component and were not ARM64-compatible. Until a browser test stack is added, run `npm run lint` and `npm run build` before submitting changes. Prefer Vitest for future unit tests and Playwright for future browser coverage.
 
 ## Commit & Pull Request Guidelines
 
-Recent history uses short Conventional Commits-style messages, for example `docs: update rep id`, `fix: emit file`, and `chore: clean cache`. Use a concise lowercase type such as `fix`, `docs`, `chore`, `style`, or `test`, with an optional scope when useful. Pull requests should include a brief change summary, testing performed, linked issues when applicable, and screenshots or GIFs for visible map or UI changes.
+Recent history uses short Conventional Commits-style messages, for example `docs: update rep id`, `fix: emit file`, and `chore: clean cache`. Use a concise lowercase type such as `fix`, `docs`, `chore`, `style`, `test`, or `refactor`, with an optional scope when useful. Pull requests should include a brief summary, verification commands, linked issues when applicable, and screenshots or GIFs for visible map changes.
 
 ## Security & Configuration Tips
 
-Do not commit local secrets or machine-specific settings. Keep public static data in `static/`, build-time environment values in `config/*.env.js`, and avoid editing generated build output.
+Use Node.js 22 as declared in `.nvmrc` and `package.json` engines. Do not commit local secrets or machine-specific settings. Keep public runtime assets under `public/`, and avoid editing generated `dist/` output.

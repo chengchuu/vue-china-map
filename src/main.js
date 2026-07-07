@@ -1,12 +1,8 @@
-import Vue from 'vue'
-import Index from './components/index.vue'
-import store from './store/index'
+import { createApp } from 'vue'
+import { createPinia } from 'pinia'
+import App from './App.vue'
+import './styles.css'
 
-let ChinaMap = new Vue({
-  el: '#app',
-  store,
-  template: '<Index/>',
-  components: {Index}
-})
-
-Vue.use(ChinaMap)
+createApp(App)
+  .use(createPinia())
+  .mount('#app')
