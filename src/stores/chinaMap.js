@@ -406,22 +406,25 @@ export const useChinaMapStore = defineStore('chinaMap', {
     closeLoading () {
       this.isLoading = false
     },
-    addCount () {
-      this.showCount += 1
-
-      if (this.showCount >= 70) {
-        this.showCount = 1
+    addCount (totalCount) {
+      if (totalCount <= 0) {
+        this.showCount = 0
+        return
       }
+
+      this.showCount = (this.showCount + 1) % totalCount
     },
     async fetchHeatChinaRealData () {
       const dataUrl = `${import.meta.env.BASE_URL}static/data/heatChinaRealData.json`
       const { data } = await axios.get(dataUrl)
       const paleData = buildMapData(data)
+      const offset = paleData.length > 0 ? this.showCount % paleData.length : 0
       const lightData = [...paleData]
         .sort((a, b) => b.value[2] - a.value[2])
-        .slice(this.showCount, this.showCityNumber + this.showCount)
+        .slice(offset, this.showCityNumber + offset)
 
-      this.addCount()
+      this.showCount = offset
+      this.addCount(paleData.length)
 
       return {
         paleData,
