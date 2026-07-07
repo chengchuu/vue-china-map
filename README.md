@@ -46,4 +46,4 @@ npm test         # 当前等同于 npm run lint
 - Vuex 已替换为 Pinia。
 - Webpack 3、Babel 6、Karma、PhantomJS、Nightwatch、Selenium 和 ChromeDriver 已移除。
 - ECharts 已升级到模块化 ECharts 6，并通过 `china-map-geojson` 注册中国地图。
-- 静态数据放在 `public/static/data/`，运行时通过 Vite `BASE_URL` 访问，兼容本地开发和 GitHub Pages 项目路径。
+- 静态数据放在 `public/static/data/`，运行时通过 Vite `BASE_URL` 访问，兼容本地开发和线上部署。
