@@ -47,7 +47,7 @@ let isRefreshing = false
 
 const loadingOptions = {
   text: '加载中...',
-  color: '#23531',
+  color: '#f4e925',
   textColor: '#fff',
   maskColor: '#272D3A',
   zlevel: 0
