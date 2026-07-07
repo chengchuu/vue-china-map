@@ -1,7 +1,7 @@
 {
   "name": "vue-china-map",
   "version": "2.0.0",
-  "description": "A Vue 3 China map visualization powered by Vite and ECharts.",
+  "description": "A Vue China map visualization powered by Vite and ECharts.",
   "author": "Cheng <mazeyqian@gmail.com>",
   "type": "module",
   "scripts": {
