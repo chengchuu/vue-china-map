@@ -35,6 +35,3 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 selenium-debug.log*
-
-# Package lock files
-package-lock.json
