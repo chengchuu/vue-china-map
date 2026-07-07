@@ -43,6 +43,7 @@ const chartRef = ref(null)
 const store = useChinaMapStore()
 let chart = null
 let refreshTimer = null
+let isRefreshing = false
 
 const loadingOptions = {
   text: '加载中...',
@@ -142,25 +143,41 @@ const baseOptions = {
 }
 
 const refreshData = async () => {
-  const { paleData, lightData } = await store.fetchHeatChinaRealData()
-
-  if (store.isLoading) {
-    chart.hideLoading()
-    store.closeLoading()
+  if (!chart || isRefreshing) {
+    return
   }
 
-  chart.setOption({
-    series: [
-      {
-        name: '地区热度',
-        data: paleData
-      },
-      {
-        name: 'top5',
-        data: lightData
-      }
-    ]
-  })
+  isRefreshing = true
+
+  try {
+    const { paleData, lightData } = await store.fetchHeatChinaRealData()
+
+    if (!chart) {
+      return
+    }
+
+    if (store.isLoading) {
+      chart.hideLoading()
+      store.closeLoading()
+    }
+
+    chart.setOption({
+      series: [
+        {
+          name: '地区热度',
+          data: paleData
+        },
+        {
+          name: 'top5',
+          data: lightData
+        }
+      ]
+    })
+  } catch (error) {
+    console.error('Failed to refresh China map data:', error)
+  } finally {
+    isRefreshing = false
+  }
 }
 
 const resizeChart = () => {
@@ -185,5 +202,6 @@ onBeforeUnmount(() => {
 
   window.removeEventListener('resize', resizeChart)
   chart?.dispose()
+  chart = null
 })
 </script>

@@ -414,7 +414,7 @@ export const useChinaMapStore = defineStore('chinaMap', {
       }
     },
     async fetchHeatChinaRealData () {
-      const dataUrl = new URL('static/data/heatChinaRealData.json', import.meta.env.BASE_URL).href
+      const dataUrl = `${import.meta.env.BASE_URL}static/data/heatChinaRealData.json`
       const { data } = await axios.get(dataUrl)
       const paleData = buildMapData(data)
       const lightData = [...paleData]
