@@ -22,7 +22,6 @@ npm run dev      # 启动 Vite 开发服务器
 npm run build    # 构建生产版本到 dist/
 npm run preview  # 本地预览生产构建
 npm run lint     # 运行 ESLint
-npm test         # 当前等同于 npm run lint
 ```
 
 ## 项目结构
