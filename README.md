@@ -1,8 +1,6 @@
 # Vue 3 + Pinia + Axios + ECharts 中国地图
 
-基于 Vue 3、Vite、Pinia、Axios 和 ECharts 的动态中国地图示例。项目已从旧版 Vue 2 / Webpack 3 / Vuex 栈迁移到 Node.js 22.x 友好的现代前端栈。
-
-如需在旧版本 Node.js 14.x 中运行或者使用 Vue 2 + Vuex + Axios，可以使用 [master](https://github.com/chengchuu/vue-china-map/tree/master) 分支。
+基于 Vue 3、Vite、Pinia、Axios 和 ECharts 的动态中国地图示例。项目已从 Vue 2 迁移到 Vue 3，并适配 Node.js 22.x。如需在旧版本 Node.js 14.x 中运行或者使用 Vue 2 + Vuex + Axios，可以使用 [master](https://github.com/chengchuu/vue-china-map/tree/master) 分支。
 
 ![中国地图闪闪发光](./images/china-map.png)
 
