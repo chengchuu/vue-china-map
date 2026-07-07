@@ -1,10 +1,10 @@
-# Vue 3 + Pinia + Axios + ECharts 画一个动态更新的中国地图
+# Vue + Pinia + Axios + ECharts 画一个动态更新的中国地图
 
 ![中国地图闪闪发光](./images/china-map.png)
 
 在线演示：<https://chengchuu.github.io/vue-china-map/>
 
-📢 注意：项目已从 Vue 2 迁移到 Vue 3，并适配 Node.js 22.x。如需在旧版本 Node.js 14.x 中运行或者使用 Vue 2 + Vuex，可以使用 [master](https://github.com/chengchuu/vue-china-map/tree/master) 分支。
+📢 注意：该项目已从 Vue 2 迁移到 Vue 3，并适配 Node.js 22.x。如需在旧版本 Node.js 14.x 中运行或者使用 Vue 2 + Vuex，可以使用 [master](https://github.com/chengchuu/vue-china-map/tree/master) 分支。
 
 ## 安装与运行
 
