@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This is a Vue 3 application built with Vite. Runtime code lives in `src/`: `src/main.js` creates the Vue app, `src/App.vue` is the root component, `src/components/ChinaMap.vue` renders the ECharts map, and `src/stores/chinaMap.js` contains Pinia state/actions for loading heat-map data. Global styles are in `src/styles.css`. Public static files live under `public/`; the map data is served from `public/static/data/heatChinaRealData.json`. Build output goes to `dist/`.
+This is a Vue 3 application built with Vite. Runtime code lives in `src/`: `src/main.js` creates the Vue app, `src/App.vue` is the root component, `src/components/ChinaMap.vue` renders the ECharts map, and `src/stores/chinaMap.js` contains Pinia state/actions for loading heat-map data. Global styles are in `src/styles.css`. Public static files live under `public/`; the map data is served from `public/static/data/heatChinaRealData.json`. GitHub Pages deployment lives in `.github/workflows/pages.yml`. Build output goes to `dist/`.
 
 ## Build, Test, and Development Commands
 
@@ -12,10 +12,15 @@ This is a Vue 3 application built with Vite. Runtime code lives in `src/`: `src/
 - `npm run preview`: serve the production build locally.
 - `npm run lint`: run ESLint flat config across the project.
 - `npm test`: currently aliases `npm run lint`.
+- `BASE_PATH=/vue-china-map/ npm run build`: verify GitHub Pages project-path assets.
 
 ## Coding Style & Naming Conventions
 
 Use UTF-8, LF line endings, final newlines, trimmed trailing whitespace, and 2-space indentation. JavaScript and Vue files use ES modules, single quotes, and no semicolons. Vue single-file components should use PascalCase filenames, such as `ChinaMap.vue`. Pinia stores should live in `src/stores/` and use `useXStore` naming, such as `useChinaMapStore`.
+
+## Runtime & Deployment Notes
+
+Use `import.meta.env.BASE_URL` when referencing public assets so local dev (`/`) and GitHub Pages (`/vue-china-map/`) both work. Do not construct public asset URLs with `new URL(..., import.meta.env.BASE_URL)` because Vite's base can be a path, not an absolute URL. Keep map refresh logic guarded against overlapping async requests, failed data loads, and updates after ECharts disposal.
 
 ## Testing Guidelines
 
@@ -27,4 +32,4 @@ Recent history uses short Conventional Commits-style messages, for example `docs
 
 ## Security & Configuration Tips
 
-Use Node.js 22 as declared in `.nvmrc` and `package.json` engines. Do not commit local secrets or machine-specific settings. Keep public runtime assets under `public/`, and avoid editing generated `dist/` output.
+Use Node.js 22 as declared in `.nvmrc` and `package.json` engines. Do not commit local secrets or machine-specific settings. Keep public runtime assets under `public/`, and avoid editing generated `dist/` output. Commit `package-lock.json` when dependencies change so GitHub Actions can use `npm ci`.
