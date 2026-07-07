@@ -414,7 +414,8 @@ export const useChinaMapStore = defineStore('chinaMap', {
       }
     },
     async fetchHeatChinaRealData () {
-      const { data } = await axios.get('/static/data/heatChinaRealData.json')
+      const dataUrl = new URL('static/data/heatChinaRealData.json', import.meta.env.BASE_URL).href
+      const { data } = await axios.get(dataUrl)
       const paleData = buildMapData(data)
       const lightData = [...paleData]
         .sort((a, b) => b.value[2] - a.value[2])
