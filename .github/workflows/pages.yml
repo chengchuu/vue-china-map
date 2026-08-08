@@ -20,27 +20,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22
-          cache: npm
+          package-manager-cache: false
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       - name: Lint
         run: npm run lint
 
-      - name: Build
-        run: npm run build
-        env:
-          BASE_PATH: /${{ github.event.repository.name }}/
+      - name: Test
+        run: npm test
 
       - name: Configure Pages
         uses: actions/configure-pages@v6
+
+      - name: Build
+        run: BASE_PATH=/${{ github.event.repository.name }}/ npm run build
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
