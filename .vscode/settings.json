@@ -1,3 +1,9 @@
 {
-  "window.title": "${rootName}${separator}${dirty}${activeEditorShort}${separator}${profileName}${separator}${appName}"
+  "window.title": "${rootName}${separator}${dirty}${activeEditorShort}${separator}${profileName}${separator}${appName}",
+  "markdown.extension.toc.levels": "2..4",
+  "files.eol": "\n",
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "workbench.browser.openLocalhostLinks": false,
+  "workbench.externalBrowser": "chrome"
 }
