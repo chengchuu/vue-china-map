@@ -1,2 +1,3 @@
 public/** linguist-detectable=false
 scripts/** linguist-detectable=false
+src/**/*.js linguist-language=Vue
