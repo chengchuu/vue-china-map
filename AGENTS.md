@@ -12,7 +12,7 @@ This repository contains a Vue 3 single-page app built with Vite. `index.html` l
 - `npm run preview`: preview the production build locally.
 - `npm run lint`: run the flat ESLint config across JavaScript and Vue files.
 - `npm test`: run `scripts/validate-project.mjs`.
-- `BASE_PATH=/vue-china-map/ npm run build`: verify GitHub Pages project-path asset URLs.
+- `npm run build:pages`: build GitHub Pages assets into `dist/` with the `/vue-china-map/` base path.
 
 ## Coding Style & Naming Conventions
 
@@ -22,11 +22,11 @@ Follow `.editorconfig`: UTF-8, LF endings, final newline, trimmed trailing white
 
 Use `import.meta.env.BASE_URL` as a string prefix for public assets so local dev (`/`) and GitHub Pages (`/vue-china-map/`) both work. Do not use `new URL(..., import.meta.env.BASE_URL)`, because Vite's base can be a path rather than an absolute URL. Keep map refresh logic guarded against overlapping requests, failed loads, and updates after ECharts disposal. Clear timers and resize listeners on unmount.
 
-The Pages workflow runs on pushes to `main` and manual dispatches. It uses `actions/checkout@v7`, `actions/setup-node@v6`, Node.js 22, `package-manager-cache: false`, `npm install`, `npm run lint`, `npm test`, `actions/configure-pages@v6`, `BASE_PATH=/${{ github.event.repository.name }}/ npm run build`, artifact upload from `dist`, and `actions/deploy-pages@v5`. Update `scripts/validate-project.mjs` if this contract changes.
+The Pages workflow runs on pushes to `main` and manual dispatches. It uses `actions/checkout@v7`, `actions/setup-node@v6`, Node.js 22, `package-manager-cache: false`, `npm install`, `npm run lint`, `npm test`, `actions/configure-pages@v6`, `npm run build:pages`, artifact upload from `dist`, and `actions/deploy-pages@v5`. Update `scripts/validate-project.mjs` if this contract changes.
 
 ## Testing Guidelines
 
-There is no unit or browser test suite. Before submitting changes, run `npm run lint`, `npm test`, and `npm run build`. For deployment-sensitive changes, also run `BASE_PATH=/vue-china-map/ npm run build`. Prefer Vitest for future unit tests and Playwright for future browser coverage.
+There is no unit or browser test suite. Before submitting changes, run `npm run lint`, `npm test`, and `npm run build`. For deployment-sensitive changes, also run `npm run build:pages` and verify asset URLs in `dist/index.html` start with `/vue-china-map/`. Prefer Vitest for future unit tests and Playwright for future browser coverage.
 
 ## Commit & Pull Request Guidelines
 

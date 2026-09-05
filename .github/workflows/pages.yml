@@ -41,7 +41,7 @@ jobs:
         uses: actions/configure-pages@v6
 
       - name: Build
-        run: BASE_PATH=/${{ github.event.repository.name }}/ npm run build
+        run: npm run build:pages
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5

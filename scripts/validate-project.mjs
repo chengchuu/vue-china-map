@@ -22,7 +22,7 @@ assert.deepEqual(workflowSteps, [
   'npm run lint',
   'npm test',
   'actions/configure-pages@v6',
-  'BASE_PATH=/${{ github.event.repository.name }}/ npm run build',
+  'npm run build:pages',
   'actions/upload-pages-artifact@v5',
   'actions/deploy-pages@v5'
 ])
