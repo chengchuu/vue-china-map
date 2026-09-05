@@ -36,11 +36,11 @@ assert.match(workflow, /^\s*pages:\s*write\s*$/m)
 assert.match(workflow, /^\s*id-token:\s*write\s*$/m)
 assert.match(workflow, /^\s*path:\s*dist\s*$/m)
 
-const expectedDescription = 'An interactive China map visualization built with Vue 3, Pinia, Axios, Vite, and ECharts.'
+const expectedDescription = '基于 Vue 3、Pinia、Axios、Vite 和 ECharts 构建的交互式中国地图可视化应用。'
 const productionUrl = 'https://chengchuu.github.io/vue-china-map/'
 const repositoryUrl = 'https://github.com/chengchuu/vue-china-map'
 
-assert.match(html, /<title>Vue China Map \| Vue 3 and ECharts Visualization<\/title>/)
+assert.match(html, /<title>Vue 中国地图 \| 基于 Vue 3 与 ECharts 的可视化应用<\/title>/)
 assert.ok(html.includes(`<meta name="description" content="${expectedDescription}" />`))
 assert.ok(html.includes(`<link rel="canonical" href="${productionUrl}" />`))
 
