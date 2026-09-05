@@ -18,10 +18,11 @@ npm run dev
 ## 常用命令
 
 ```bash
-npm run dev      # 启动 Vite 开发服务器
-npm run build    # 构建生产版本到 dist/
-npm run preview  # 本地预览生产构建
-npm run lint     # 运行 ESLint
+npm run dev          # 启动 Vite 开发服务器
+npm run build        # 构建生产版本到 dist/
+npm run build:pages  # 使用 /vue-china-map/ 基础路径构建 GitHub Pages 版本到 dist/
+npm run preview      # 本地预览生产构建
+npm run lint         # 运行 ESLint
 ```
 
 ## 项目结构
