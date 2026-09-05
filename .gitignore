@@ -1,36 +1,21 @@
-# Dependencies
 node_modules/
-
-# Build outputs
 dist/
 lib/
 coverage/
-
-# Test reports
 test/unit/coverage/
 test/e2e/reports/
-
-# Cache folders
 .sass-cache/
 temp/
 undefined/
-
-# Editor directories and files
 .idea/
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
-
-# System files
 .DS_Store
-Thumbs.db
-
-# Environment configuration files
 .env.local
 .env.*.local
-
-# Log files
+Thumbs.db
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
