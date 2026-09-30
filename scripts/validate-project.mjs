@@ -12,6 +12,8 @@ const viteConfig = readProjectFile('vite.config.js')
 const store = readProjectFile('src/stores/chinaMap.js')
 const gitignore = readProjectFile('.gitignore')
 
+assert.match(workflow, /^on:\r?\n {2}push:\r?\n {4}branches:\r?\n {6}- pages\r?\n {2}workflow_dispatch:\r?\n\s*\r?\npermissions:/m)
+
 const workflowSteps = [...workflow.matchAll(/^\s*(?:uses|run):\s+(.+)\s*$/gm)]
   .map(match => match[1])
 

@@ -22,7 +22,7 @@ Follow `.editorconfig`: UTF-8, LF endings, final newline, trimmed trailing white
 
 Use `import.meta.env.BASE_URL` as a string prefix for public assets so local dev (`/`) and GitHub Pages (`/vue-china-map/`) both work. Do not use `new URL(..., import.meta.env.BASE_URL)`, because Vite's base can be a path rather than an absolute URL. Keep map refresh logic guarded against overlapping requests, failed loads, and updates after ECharts disposal. Clear timers and resize listeners on unmount.
 
-The Pages workflow runs on pushes to `main` and manual dispatches. It uses `actions/checkout@v7`, `actions/setup-node@v6`, Node.js 22, `package-manager-cache: false`, `npm install`, `npm run lint`, `npm test`, `actions/configure-pages@v6`, `npm run build:pages`, artifact upload from `dist`, and `actions/deploy-pages@v5`. Update `scripts/validate-project.mjs` if this contract changes.
+The Pages workflow runs on pushes to `pages` and manual dispatches. It uses `actions/checkout@v7`, `actions/setup-node@v6`, Node.js 22, `package-manager-cache: false`, `npm install`, `npm run lint`, `npm test`, `actions/configure-pages@v6`, `npm run build:pages`, artifact upload from `dist`, and `actions/deploy-pages@v5`. The `github-pages` environment must permit deployments from `pages`. Update `scripts/validate-project.mjs` if this contract changes.
 
 ## Testing Guidelines
 
