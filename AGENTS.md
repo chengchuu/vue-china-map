@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 
-This repository contains a Vue 3 single-page app built with Vite. `index.html` loads `src/main.js`, which creates the Vue app and installs Pinia. `src/App.vue` is the root component. `src/components/ChinaMap.vue` registers `china-map-geojson` with modular ECharts and renders the animated map. `src/stores/chinaMap.js` loads `public/static/data/heatChinaRealData.json`, filters data by known coordinates, and rotates highlighted cities. Global styles are in `src/styles.css`, the README screenshot is `images/china-map.png`, and GitHub Pages deployment is in `.github/workflows/pages.yml`. `scripts/validate-project.mjs` enforces deployment, SEO, heading, base-path, and lockfile-ignore contracts. Vite writes output to `dist/`; do not edit or commit generated output.
+This repository contains a Vue 3 single-page app built with Vite. `index.html` loads `src/main.js`, which creates the Vue app and installs Pinia. `src/App.vue` is the root component. `src/components/ChinaMap.vue` registers `china-map-geojson` with modular ECharts and renders the animated map. `src/stores/chinaMap.js` loads `public/static/data/heatChinaRealData.json`, filters data by known coordinates, and rotates highlighted cities. Global styles are in `src/styles.css`, the README screenshot is `images/china-map.png`, and GitHub Pages deployment is in `.github/workflows/pages.yml`. `scripts/validate-project.mjs` checks essential Pages deployment settings and page metadata. Vite writes output to `dist/`; do not edit or commit generated output.
 
 ## Build, Test, and Development Commands
 
@@ -22,7 +22,7 @@ Follow `.editorconfig`: UTF-8, LF endings, final newline, trimmed trailing white
 
 Use `import.meta.env.BASE_URL` as a string prefix for public assets so local dev (`/`) and GitHub Pages (`/vue-china-map/`) both work. Do not use `new URL(..., import.meta.env.BASE_URL)`, because Vite's base can be a path rather than an absolute URL. Keep map refresh logic guarded against overlapping requests, failed loads, and updates after ECharts disposal. Clear timers and resize listeners on unmount.
 
-The Pages workflow runs on pushes to `pages` and manual dispatches. It uses `actions/checkout@v7`, `actions/setup-node@v6`, Node.js 22, `package-manager-cache: false`, `npm install`, `npm run lint`, `npm test`, `actions/configure-pages@v6`, `npm run build:pages`, artifact upload from `dist`, and `actions/deploy-pages@v5`. The `github-pages` environment must permit deployments from `pages`. Update `scripts/validate-project.mjs` if this contract changes.
+The Pages workflow runs on pushes to `pages` and manual dispatches. It uses `actions/checkout@v7`, `actions/setup-node@v6`, Node.js 22, `package-manager-cache: false`, `npm install`, `npm run lint`, `npm test`, `actions/configure-pages@v6`, `npm run build:pages`, artifact upload from `dist`, and `actions/deploy-pages@v5`. The `github-pages` environment must permit deployments from `pages`. Keep validator checks focused on deployment requirements and metadata validity rather than exact versions, step order, wording, or source syntax.
 
 ## Testing Guidelines
 
